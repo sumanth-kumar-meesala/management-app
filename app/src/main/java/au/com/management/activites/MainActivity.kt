@@ -1,7 +1,8 @@
-package au.com.management
+package au.com.management.activites
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import au.com.management.R
 
 class MainActivity : AppCompatActivity() {
 

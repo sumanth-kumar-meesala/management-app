@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Management</string>
+    <string name="error_message">Something went wrong! try again after some time</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="or">Or</string>
+    <string name="register">Register</string>
+    <string name="enter_valid_email">Enter valid email</string>
+    <string name="enter_valid_password">Enter valid password</string>
+    <string name="name">Name</string>
+    <string name="enter_valid_name">Enter valid name</string>
 </resources>
