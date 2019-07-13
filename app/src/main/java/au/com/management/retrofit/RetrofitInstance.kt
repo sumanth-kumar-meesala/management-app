@@ -21,7 +21,7 @@ object RetrofitInstance {
         okHttpClient = httpClientBuilder.build()
 
         retrofit = Retrofit.Builder()
-            .baseUrl("https://ancient-fortress-28196.herokuapp.com/")
+            .baseUrl("https://murmuring-woodland-60693.herokuapp.com/")
             .client(okHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()

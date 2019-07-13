@@ -6,6 +6,7 @@ import android.util.Patterns
 import android.view.View
 import au.com.management.R
 import au.com.management.models.BaseResponse
+import au.com.management.models.LoginResponse
 import au.com.management.models.RegisterRequest
 import au.com.management.retrofit.RetrofitInstance
 import au.com.management.utils.PreferenceUtils
@@ -62,31 +63,60 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
                     registerRequest.email = email
                     registerRequest.password = password
 
-                    RetrofitInstance.service.login(registerRequest).enqueue(object : Callback<BaseResponse<String>> {
-                        override fun onFailure(call: Call<BaseResponse<String>>, t: Throwable) {
-                            hideLoading()
-                            showToast(t.message!!)
-                        }
-
-                        override fun onResponse(
-                            call: Call<BaseResponse<String>>,
-                            response: Response<BaseResponse<String>>
-                        ) {
-                            hideLoading()
-
-                            if (response.isSuccessful && response.body() != null) {
-                                val token = response.body()?.data
-                                RetrofitInstance.setToken(token)
-                                PreferenceUtils.setToken(token, this@LoginActivity)
-                                startActivity(Intent(applicationContext, MainActivity::class.java))
-                                finish()
-                            } else {
-                                showToast(response.message())
+                    RetrofitInstance.service.login(registerRequest)
+                        .enqueue(object : Callback<BaseResponse<LoginResponse>> {
+                            override fun onFailure(call: Call<BaseResponse<LoginResponse>>, t: Throwable) {
+                                hideLoading()
+                                showToast(t.message!!)
                             }
-                        }
-                    })
+
+                            override fun onResponse(
+                                call: Call<BaseResponse<LoginResponse>>,
+                                response: Response<BaseResponse<LoginResponse>>
+                            ) {
+                                hideLoading()
+
+                                if (response.isSuccessful && response.body() != null) {
+                                    val data = response.body()?.data
+                                    RetrofitInstance.setToken(data?.token)
+                                    PreferenceUtils.setToken(data?.token, this@LoginActivity)
+                                    PreferenceUtils.setType(data?.type, this@LoginActivity)
+
+                                    showHome()
+                                } else {
+                                    showToast(response.message())
+                                }
+                            }
+                        })
                 }
             }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        showHome()
+    }
+
+    private fun showHome() {
+        if (PreferenceUtils.getToken(this) != null) {
+            val type = PreferenceUtils.getType(this)
+
+            when (type) {
+                "Student" -> {
+                    startActivity(Intent(this, StudentActivity::class.java))
+                }
+                "Teacher" -> {
+                    startActivity(Intent(this, TeacherActivity::class.java))
+                }
+                "Management" -> {
+                    startActivity(Intent(this, ManagementActivity::class.java))
+                }
+                "Admin" -> {
+                    startActivity(Intent(this, AdminActivity::class.java))
+                }
+            }
+            finish()
         }
     }
 }

@@ -12,5 +12,13 @@ class PreferenceUtils {
         fun getToken(context: Context): String? {
             return PreferenceManager.getDefaultSharedPreferences(context).getString("token", null)
         }
+
+        fun setType(token: String?, context: Context) {
+            PreferenceManager.getDefaultSharedPreferences(context).edit().putString("type", token).apply()
+        }
+
+        fun getType(context: Context): String? {
+            return PreferenceManager.getDefaultSharedPreferences(context).getString("type", null)
+        }
     }
 }
