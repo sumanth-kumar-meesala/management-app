@@ -103,7 +103,6 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     private fun showHome() {
         if (PreferenceUtils.getToken(this) != null) {
             val type = PreferenceUtils.getType(this)
-            startActivity(Intent(this, ManagementActivity::class.java))
 
             when (type) {
                 "Student" -> {
