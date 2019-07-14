@@ -1,9 +1,6 @@
 package au.com.management.retrofit
 
-import au.com.management.models.BaseResponse
-import au.com.management.models.LoginResponse
-import au.com.management.models.QuestionRequest
-import au.com.management.models.RegisterRequest
+import au.com.management.models.*
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -23,4 +20,11 @@ interface RetrofitService {
 
     @POST("/question/completed")
     fun completed(@Body body: QuestionRequest): Call<BaseResponse<Any>>
+
+    @POST("/user/addUser")
+    fun addUser(@Body body: RegisterRequest): Call<BaseResponse<Any>>
+
+    @POST("/user/listUser")
+    fun listUsers(): Call<BaseResponse<List<User>>>
+
 }
