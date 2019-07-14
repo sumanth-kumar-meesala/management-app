@@ -1,7 +1,13 @@
 package au.com.management.activites
 
+import android.Manifest.permission
+import android.app.Activity
+import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Bundle
+import android.provider.MediaStore
 import android.view.View
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -14,15 +20,22 @@ import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
+import pub.devrel.easypermissions.AfterPermissionGranted
+import pub.devrel.easypermissions.EasyPermissions
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class AnswerActivity : BaseActivity() {
 
     companion object {
         val QUESTION = "QUESTION"
+        val REQUEST_CAPTURE_IMAGE = 100
+        const val RC_CAMERA = 3456
     }
+
+    lateinit var ivImage: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +47,7 @@ class AnswerActivity : BaseActivity() {
         val tvQuestion = findViewById<AppCompatTextView>(R.id.tvQuestion)
         tvQuestion.text = question.question
 
+        ivImage = findViewById(R.id.ivImage)
         val llOptions = findViewById<LinearLayout>(R.id.llOptions)
         val llYesNo = findViewById<LinearLayout>(R.id.llYesNo)
         val tilShortAnswer = findViewById<TextInputLayout>(R.id.tilShortAnswer)
@@ -127,6 +141,7 @@ class AnswerActivity : BaseActivity() {
                     hideLoading()
 
                     if (response.isSuccessful && response.body() != null) {
+                        showToast(R.string.answer_submitted_successfully)
                         finish()
                     } else {
                         showToast(response.message())
@@ -139,5 +154,47 @@ class AnswerActivity : BaseActivity() {
                 }
             })
         }
+
+        findViewById<MaterialButton>(R.id.btnCapture).setOnClickListener {
+            openCameraIntent()
+        }
+    }
+
+    @AfterPermissionGranted(RC_CAMERA)
+    private fun openCameraIntent() {
+        val perms = arrayOf(permission.CAMERA)
+        if (EasyPermissions.hasPermissions(this, *perms)) {
+            val pictureIntent = Intent(
+                MediaStore.ACTION_IMAGE_CAPTURE
+            )
+            if (pictureIntent.resolveActivity(packageManager) != null) {
+                startActivityForResult(
+                    pictureIntent,
+                    REQUEST_CAPTURE_IMAGE
+                )
+            }
+        } else {
+            EasyPermissions.requestPermissions(
+                this@AnswerActivity, getString(R.string.camera_rationale),
+                RC_CAMERA, *perms
+            )
+        }
+    }
+
+    override fun onActivityResult(
+        requestCode: Int, resultCode: Int,
+        data: Intent?
+    ) {
+        if (requestCode == REQUEST_CAPTURE_IMAGE && resultCode == Activity.RESULT_OK) {
+            if (data != null && data.extras != null) {
+                val imageBitmap = data.extras!!.get("data") as Bitmap
+                ivImage.setImageBitmap(imageBitmap)
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
 }

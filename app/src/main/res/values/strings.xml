@@ -30,4 +30,6 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="capture">Capture</string>
+    <string name="camera_rationale">This app requires to access camera to capture image</string>
+    <string name="answer_submitted_successfully">Answer submitted successfully</string>
 </resources>
