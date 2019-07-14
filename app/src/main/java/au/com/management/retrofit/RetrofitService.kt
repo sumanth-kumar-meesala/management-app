@@ -15,6 +15,9 @@ interface RetrofitService {
     @POST("/user/login")
     fun login(@Body body: RegisterRequest): Call<BaseResponse<LoginResponse>>
 
-    @POST("/question/addQuestion")
+    @POST("/question/add")
     fun addQuestion(@Body body: QuestionRequest): Call<BaseResponse<Any>>
+
+    @POST("/question/list")
+    fun listQuestion(): Call<BaseResponse<List<QuestionRequest>>>
 }
