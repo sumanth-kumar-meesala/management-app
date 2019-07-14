@@ -27,4 +27,6 @@ interface RetrofitService {
     @POST("/user/listUser")
     fun listUsers(): Call<BaseResponse<List<User>>>
 
+    @POST("/user/updatePassword")
+    fun updatePassword(@Body body: UpdatePasswordRequest): Call<BaseResponse<Any>>
 }
