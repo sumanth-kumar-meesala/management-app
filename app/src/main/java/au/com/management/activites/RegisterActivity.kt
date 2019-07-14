@@ -46,7 +46,7 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.btnLogin -> {
-                startActivity(Intent(this, RegisterActivity::class.java))
+                startActivity(Intent(this, LoginActivity::class.java))
                 finish()
             }
 

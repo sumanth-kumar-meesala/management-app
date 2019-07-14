@@ -6,4 +6,17 @@
         <item>Management</item>
         <item>Admin</item>
     </string-array>
+
+    <string-array name="questionType">
+        <item>Yes or No</item>
+        <item>Options</item>
+        <item>Image</item>
+        <item>Short Question</item>
+        <item>Long Question</item>
+    </string-array>
+
+    <string-array name="yesNoAnswers">
+        <item>Yes</item>
+        <item>No</item>
+    </string-array>
 </resources>

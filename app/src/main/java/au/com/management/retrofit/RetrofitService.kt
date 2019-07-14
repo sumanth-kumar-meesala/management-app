@@ -2,6 +2,7 @@ package au.com.management.retrofit
 
 import au.com.management.models.BaseResponse
 import au.com.management.models.LoginResponse
+import au.com.management.models.QuestionRequest
 import au.com.management.models.RegisterRequest
 import retrofit2.Call
 import retrofit2.http.Body
@@ -13,4 +14,7 @@ interface RetrofitService {
 
     @POST("/user/login")
     fun login(@Body body: RegisterRequest): Call<BaseResponse<LoginResponse>>
+
+    @POST("/question/addQuestion")
+    fun addQuestion(@Body body: QuestionRequest): Call<BaseResponse<Any>>
 }

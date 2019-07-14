@@ -11,7 +11,6 @@ object RetrofitInstance {
     lateinit var retrofit: Retrofit private set
     lateinit var tokenHttpInterceptor: TokenHttpInterceptor private set
 
-
     @Synchronized
     fun initialize() {
         tokenHttpInterceptor = TokenHttpInterceptor()
@@ -31,6 +30,8 @@ object RetrofitInstance {
 
     @Synchronized
     fun setToken(token: String?) {
-        tokenHttpInterceptor.token = token
+        if (token != null) {
+            tokenHttpInterceptor.token = token
+        }
     }
 }

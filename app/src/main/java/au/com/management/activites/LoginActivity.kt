@@ -78,7 +78,9 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
 
                                 if (response.isSuccessful && response.body() != null) {
                                     val data = response.body()?.data
+                                    RetrofitInstance.initialize()
                                     RetrofitInstance.setToken(data?.token)
+
                                     PreferenceUtils.setToken(data?.token, this@LoginActivity)
                                     PreferenceUtils.setType(data?.type, this@LoginActivity)
 
@@ -101,21 +103,22 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
     private fun showHome() {
         if (PreferenceUtils.getToken(this) != null) {
             val type = PreferenceUtils.getType(this)
+            startActivity(Intent(this, TeacherActivity::class.java))
 
-            when (type) {
-                "Student" -> {
-                    startActivity(Intent(this, StudentActivity::class.java))
-                }
-                "Teacher" -> {
-                    startActivity(Intent(this, TeacherActivity::class.java))
-                }
-                "Management" -> {
-                    startActivity(Intent(this, ManagementActivity::class.java))
-                }
-                "Admin" -> {
-                    startActivity(Intent(this, AdminActivity::class.java))
-                }
-            }
+//            when (type) {
+//                "Student" -> {
+//                    startActivity(Intent(this, StudentActivity::class.java))
+//                }
+//                "Teacher" -> {
+//                    startActivity(Intent(this, TeacherActivity::class.java))
+//                }
+//                "Management" -> {
+//                    startActivity(Intent(this, ManagementActivity::class.java))
+//                }
+//                "Admin" -> {
+//                    startActivity(Intent(this, AdminActivity::class.java))
+//                }
+//            }
             finish()
         }
     }

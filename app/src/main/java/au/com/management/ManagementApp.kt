@@ -7,6 +7,7 @@ import au.com.management.utils.PreferenceUtils
 class ManagementApp : Application() {
     override fun onCreate() {
         super.onCreate()
+
         RetrofitInstance.initialize()
 
         val token = PreferenceUtils.getToken(applicationContext)

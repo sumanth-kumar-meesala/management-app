@@ -1,9 +1,187 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:background="@android:color/white"
         android:layout_height="match_parent"
+        android:padding="32dp"
+        android:orientation="vertical"
+        android:gravity="center"
         tools:context=".activites.TeacherActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/select_question_type"
+            android:fontFamily="sans-serif-condensed"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center_horizontal"/>
+
+    <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinnerQuestionType"
+            android:layout_width="match_parent"
+            android:entries="@array/questionType"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/ic_border"
+            android:layout_height="wrap_content"
+            android:padding="16dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilQuestion"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="@string/question">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etQuestion"
+                android:inputType="textEmailAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+            android:id="@+id/llYesNo"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/select_answer"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center_horizontal"/>
+
+        <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinnerAnswer"
+                android:layout_width="match_parent"
+                android:entries="@array/yesNoAnswers"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/ic_border"
+                android:layout_height="wrap_content"
+                android:padding="16dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+            android:id="@+id/llOptions"
+            android:orientation="vertical"
+            android:layout_marginTop="8dp"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+
+        <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/fill_options"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center_horizontal"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilOptionsAnswer"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/answer">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etOptionsAnswer"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilOption1"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/option1">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etOption1"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilOption2"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/option2">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etOption2"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilOption3"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/option3">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etOption3"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilOption4"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/option4">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etOption4"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/done"
+            android:padding="16dp"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/colorPrimary"
+            android:backgroundTint="@color/colorAccent"/>
+</LinearLayout>

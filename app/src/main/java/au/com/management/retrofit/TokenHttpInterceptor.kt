@@ -14,7 +14,7 @@ class TokenHttpInterceptor : Interceptor {
         val requestBuilder = original.newBuilder()
 
         if (token != null) {
-            requestBuilder.addHeader("token", "$token")
+            requestBuilder.addHeader("x-access-token", "$token")
         }
 
         val request = requestBuilder.build()
