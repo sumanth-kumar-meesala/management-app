@@ -3,6 +3,9 @@ package au.com.management.activites
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import au.com.management.R
@@ -10,6 +13,7 @@ import au.com.management.adapter.UserAdapter
 import au.com.management.models.BaseResponse
 import au.com.management.models.User
 import au.com.management.retrofit.RetrofitInstance
+import au.com.management.utils.PreferenceUtils
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,6 +27,9 @@ class AdminActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         rvUsers = findViewById(R.id.rvUsers)
         rvUsers.layoutManager = LinearLayoutManager(this)
@@ -68,5 +75,24 @@ class AdminActivity : BaseActivity() {
                 fetchUsers()
             }
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_home, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.action_logout -> {
+                PreferenceUtils.setToken(null, this)
+                PreferenceUtils.setType(null, this)
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+        }
+
+        return true
     }
 }

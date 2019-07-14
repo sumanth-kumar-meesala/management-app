@@ -105,20 +105,20 @@ class LoginActivity : BaseActivity(), View.OnClickListener {
             val type = PreferenceUtils.getType(this)
             startActivity(Intent(this, ManagementActivity::class.java))
 
-//            when (type) {
-//                "Student" -> {
-//                    startActivity(Intent(this, StudentActivity::class.java))
-//                }
-//                "Teacher" -> {
-//                    startActivity(Intent(this, TeacherActivity::class.java))
-//                }
-//                "Management" -> {
-//                    startActivity(Intent(this, ManagementActivity::class.java))
-//                }
-//                "Admin" -> {
-//                    startActivity(Intent(this, AdminActivity::class.java))
-//                }
-//            }
+            when (type) {
+                "Student" -> {
+                    startActivity(Intent(this, StudentActivity::class.java))
+                }
+                "Teacher" -> {
+                    startActivity(Intent(this, TeacherActivity::class.java))
+                }
+                "Management" -> {
+                    startActivity(Intent(this, ManagementActivity::class.java))
+                }
+                "Admin" -> {
+                    startActivity(Intent(this, AdminActivity::class.java))
+                }
+            }
             finish()
         }
     }

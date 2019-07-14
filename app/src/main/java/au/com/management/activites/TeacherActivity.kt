@@ -1,14 +1,19 @@
 package au.com.management.activites
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatSpinner
+import androidx.appcompat.widget.Toolbar
 import au.com.management.R
 import au.com.management.models.BaseResponse
 import au.com.management.models.QuestionRequest
 import au.com.management.retrofit.RetrofitInstance
+import au.com.management.utils.PreferenceUtils
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -37,6 +42,9 @@ class TeacherActivity : BaseActivity(), AdapterView.OnItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_teacher)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
 
         llYesNo = findViewById(R.id.llYesNo)
         llOptions = findViewById(R.id.llOptions)
@@ -163,5 +171,24 @@ class TeacherActivity : BaseActivity(), AdapterView.OnItemSelectedListener {
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_home, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        when (item.itemId) {
+            R.id.action_logout -> {
+                PreferenceUtils.setToken(null, this)
+                PreferenceUtils.setType(null, this)
+                startActivity(Intent(this, LoginActivity::class.java))
+                finish()
+            }
+        }
+
+        return true
     }
 }

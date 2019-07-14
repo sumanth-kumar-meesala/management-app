@@ -14,7 +14,6 @@
     <string name="question">Question</string>
     <string name="select_options">Select options or answers</string>
     <string name="select_answer">Select answer</string>
-    <string name="answer">Answer</string>
     <string name="option1">Option 1</string>
     <string name="option2">Option 2</string>
     <string name="option3">Option 3</string>
@@ -34,4 +33,10 @@
     <string name="answer_submitted_successfully">Answer submitted successfully</string>
     <string name="add_user">Add user</string>
     <string name="password_updated_successfully">Password updated successfully</string>
+    <string name="management">Management</string>
+    <string name="admin">Admin</string>
+    <string name="student">Student</string>
+    <string name="teacher">Teacher</string>
+    <string name="logout">Logout</string>
+    <string name="answer">Answer</string>
 </resources>

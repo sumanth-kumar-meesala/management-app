@@ -4,8 +4,10 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.AppCompatSpinner
+import androidx.appcompat.widget.Toolbar
 import au.com.management.R
 import au.com.management.models.BaseResponse
 import au.com.management.models.RegisterRequest
@@ -31,6 +33,12 @@ class AddUserActivity : BaseActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_user)
+
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
 
         etName = findViewById(R.id.etName)
         etEmail = findViewById(R.id.etEmail)
@@ -92,5 +100,15 @@ class AddUserActivity : BaseActivity(), View.OnClickListener {
                 }
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

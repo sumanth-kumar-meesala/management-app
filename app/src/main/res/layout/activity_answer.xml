@@ -1,162 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:background="@android:color/white"
-        android:layout_height="match_parent"
-        android:padding="32dp"
-        android:orientation="vertical"
-        android:gravity="center"
-        tools:context=".activites.TeacherActivity">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvQuestion"
+    <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/select_question_type"
-            android:fontFamily="sans-serif-condensed"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="@color/colorPrimary"
-            android:gravity="center_horizontal"/>
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:background="@color/colorPrimary"
+                app:title="@string/answer"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        >
+
+        </androidx.appcompat.widget.Toolbar>
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
-            android:id="@+id/llYesNo"
+            android:layout_width="match_parent"
+            android:background="@android:color/white"
+            android:layout_height="match_parent"
+            android:padding="32dp"
             android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:gravity="center"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            tools:context=".activites.TeacherActivity">
 
-        <RadioGroup
-                android:id="@+id/rgYesNo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            <RadioButton
-                    android:id="@+id/rbYes"
-                    android:text="@string/yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <RadioButton
-                    android:id="@+id/rbNo"
-                    android:text="@string/no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-        </RadioGroup>
-
-    </LinearLayout>
-
-    <LinearLayout
-            android:id="@+id/llOptions"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <RadioGroup
-                android:id="@+id/rgOptions"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-            <RadioButton
-                    android:id="@+id/rbOption1"
-                    android:text="@string/yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <RadioButton
-                    android:id="@+id/rbOption2"
-                    android:text="@string/yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <RadioButton
-                    android:id="@+id/rbOption3"
-                    android:text="@string/yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-            <RadioButton
-                    android:id="@+id/rbOption4"
-                    android:text="@string/yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
-
-        </RadioGroup>
-
-    </LinearLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilShortAnswer"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/short_answer">
-
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etShortAnswer"
-                android:inputType="textEmailAddress"
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvQuestion"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="top"
-                android:maxLines="1"
-        />
-    </com.google.android.material.textfield.TextInputLayout>
+                android:text="@string/select_question_type"
+                android:fontFamily="sans-serif-condensed"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center_horizontal"/>
 
-    <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilLongAnswer"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:hint="@string/long_answer">
-
-        <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etLongAnswer"
-                android:inputType="textEmailAddress"
+        <LinearLayout
+                android:id="@+id/llYesNo"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
-                android:lines="3"
-                android:gravity="top"
-                android:minLines="3"
-        />
-    </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content">
 
-    <LinearLayout
-            android:id="@+id/llImage"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            <RadioGroup
+                    android:id="@+id/rgYesNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <RadioButton
+                        android:id="@+id/rbYes"
+                        android:text="@string/yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <RadioButton
+                        android:id="@+id/rbNo"
+                        android:text="@string/no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/llOptions"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <RadioGroup
+                    android:id="@+id/rgOptions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                <RadioButton
+                        android:id="@+id/rbOption1"
+                        android:text="@string/yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <RadioButton
+                        android:id="@+id/rbOption2"
+                        android:text="@string/yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <RadioButton
+                        android:id="@+id/rbOption3"
+                        android:text="@string/yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                <RadioButton
+                        android:id="@+id/rbOption4"
+                        android:text="@string/yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilShortAnswer"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/short_answer">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etShortAnswer"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:maxLines="1"
+            />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilLongAnswer"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:hint="@string/long_answer">
+
+            <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etLongAnswer"
+                    android:inputType="textEmailAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:lines="3"
+                    android:gravity="top"
+                    android:minLines="3"
+            />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+                android:id="@+id/llImage"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCapture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/capture"
+                    android:padding="16dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="16dp"
+                    android:textColor="@color/colorPrimary"
+                    android:backgroundTint="@color/colorAccent"/>
+
+
+            <ImageView
+                    android:id="@+id/ivImage"
+                    android:layout_width="match_parent"
+                    android:scaleType="centerCrop"
+                    android:layout_height="240dp"/>
+        </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnCapture"
-                android:layout_width="wrap_content"
+                android:id="@+id/btnDone"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/capture"
+                android:text="@string/done"
                 android:padding="16dp"
-                android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:textColor="@color/colorPrimary"
                 android:backgroundTint="@color/colorAccent"/>
 
-
-        <ImageView
-                android:id="@+id/ivImage"
-                android:layout_width="match_parent"
-                android:scaleType="centerCrop"
-                android:layout_height="240dp"/>
     </LinearLayout>
-
-    <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/done"
-            android:padding="16dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/colorPrimary"
-            android:backgroundTint="@color/colorAccent"/>
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
