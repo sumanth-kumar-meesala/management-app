@@ -25,4 +25,9 @@
     <string name="option_is_empty">Option is empty</string>
     <string name="answer_must_match_options">Answer must match options</string>
     <string name="fill_options">Fill options</string>
+    <string name="long_answer">Long Answer</string>
+    <string name="short_answer">Short Answer</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="capture">Capture</string>
 </resources>

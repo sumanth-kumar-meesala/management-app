@@ -20,4 +20,7 @@ interface RetrofitService {
 
     @POST("/question/list")
     fun listQuestion(): Call<BaseResponse<List<QuestionRequest>>>
+
+    @POST("/question/completed")
+    fun completed(@Body body: QuestionRequest): Call<BaseResponse<Any>>
 }

@@ -31,7 +31,7 @@ class StudentActivity : BaseActivity() {
                 hideLoading()
 
                 if (response.isSuccessful && response.body() != null) {
-                    val questionAdapter = QuestionAdapter(response.body()?.data!!)
+                    val questionAdapter = QuestionAdapter(response.body()?.data!!, this@StudentActivity)
                     rvQuestions.adapter = questionAdapter
                 } else {
                     showToast(response.body()?.message!!)
